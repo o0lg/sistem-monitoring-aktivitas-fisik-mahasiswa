@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -33,6 +32,7 @@ int main() {
     int langkah[7];
     int olahraga[7];
     float istirahat[7];
+    float airMinum[7]; 
 
     cout << "SISTEM MONITORING AKTIVITAS FISIK MAHASISWA\n";
 
@@ -47,6 +47,9 @@ int main() {
 
         cout << "Waktu istirahat (jam): ";
         cin >> istirahat[i];
+        
+        cout << "Konsumsi air minum (liter): ";
+        cin >> airMinum[i];
     }
 
     cout << "\n========== REKAP AKTIVITAS ==========\n";
@@ -54,24 +57,28 @@ int main() {
     cout << left << setw(12) << "Hari"
          << setw(15) << "Langkah"
          << setw(15) << "Olahraga"
-         << setw(15) << "Istirahat" << endl;
+         << setw(15) << "Istirahat" 
+         << setw(15) << "Air Minum" << endl; 
 
     for (int i = 0; i < 7; i++) {
         cout << left << setw(12) << hari[i]
              << setw(15) << langkah[i]
              << setw(15) << olahraga[i]
-             << setw(15) << istirahat[i] << endl;
+             << setw(15) << istirahat[i] 
+             << setw(15) << airMinum[i] << endl; 
     }
 
     float rataLangkah = hitungRataRata(langkah);
     float rataOlahraga = hitungRataRata(olahraga);
     float rataIstirahat = hitungRataRataIstirahat(istirahat);
+    float rataAirMinum = hitungRataRataIstirahat(airMinum); 
 
     cout << fixed << setprecision(2);
 
     cout << "\nRata-rata langkah: " << rataLangkah << endl;
     cout << "Rata-rata olahraga: " << rataOlahraga << " menit\n";
     cout << "Rata-rata istirahat: " << rataIstirahat << " jam\n";
+    cout << "Rata-rata air minum: " << rataAirMinum << " liter\n"; 
 
     cout << "\n========== ANALISIS ==========\n";
 
@@ -93,5 +100,14 @@ int main() {
         cout << "Tingkatkan waktu istirahat.\n";
     }
 
+    if (rataAirMinum >= 2.0) {
+        cout << "Konsumsi air minum cukup baik.\n";
+    } else {
+        cout << "Tingkatkan konsumsi air minum.\n";
+    }
+
     return 0;
+}
+
+
 }
