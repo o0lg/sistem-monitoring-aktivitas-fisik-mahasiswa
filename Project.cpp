@@ -63,10 +63,11 @@ int main() {
     }
 
     if (rataOlahraga >= 30) {
-        cout << "Durasi olahraga cukup baik.\n";
+        cout << "durasi olahraga cukup baik.\n";
     } else {
         cout << "Tingkatkan durasi olahraga.\n";
     }
+    
 
     return 0;
 }
