@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-// Fungsi menghitung rata-rata
 float hitungRataRata(int data[]) {
     int total = 0;
 
@@ -14,7 +13,6 @@ float hitungRataRata(int data[]) {
     return total / 7.0;
 }
 
-// Fungsi menghitung rata-rata istirahat
 float hitungRataRataIstirahat(float data[]) {
     float total = 0;
 
@@ -25,7 +23,6 @@ float hitungRataRataIstirahat(float data[]) {
     return total / 7.0;
 }
 
-// Fungsi mencari olahraga terlama
 void cariOlahragaTerlama(int data[], string hari[]) {
     int tertinggi = data[0];
     int index = 0;
@@ -44,7 +41,6 @@ void cariOlahragaTerlama(int data[], string hari[]) {
          << tertinggi << " menit" << endl;
 }
 
-// Fungsi mencari istirahat terlama
 void cariIstirahatTerlama(float data[], string hari[]) {
     float tertinggi = data[0];
     int index = 0;
@@ -63,15 +59,17 @@ void cariIstirahatTerlama(float data[], string hari[]) {
          << tertinggi << " jam" << endl;
 }
 
-//Fitur Grafik Batang Langkah
 void tampilGrafikLangkah(int data[], string hari[]) {
     for (int i = 0; i < 7; i++) {
         cout << left << setw(7) << hari[i] << "| ";
+
         for (int j = 0; j < data[i] / 1000; j++) {
             cout << "*";
         }
-        cout << " " << data[1] << endl;
+
+        cout << " " << data[i] << endl;
     }
+
     cout << "(1 bintang = 1000 langkah)\n";
 }
 
@@ -87,7 +85,6 @@ int main() {
 
     cout << "SISTEM MONITORING AKTIVITAS FISIK MAHASISWA\n";
 
-    // Input data aktivitas
     for (int i = 0; i < 7; i++) {
         cout << "\nHari " << hari[i] << endl;
 
@@ -101,7 +98,6 @@ int main() {
         cin >> istirahat[i];
     }
 
-    // Rekap aktivitas tanpa tabel
     cout << "\n========== REKAP AKTIVITAS ==========\n";
 
     for (int i = 0; i < 7; i++) {
@@ -111,7 +107,6 @@ int main() {
         cout << "Waktu istirahat: " << istirahat[i] << " jam" << endl;
     }
 
-    // Menghitung rata-rata
     float rataLangkah = hitungRataRata(langkah);
     float rataOlahraga = hitungRataRata(olahraga);
     float rataIstirahat = hitungRataRataIstirahat(istirahat);
@@ -124,7 +119,6 @@ int main() {
     cout << "Rata-rata olahraga: " << rataOlahraga << " menit\n";
     cout << "Rata-rata istirahat: " << rataIstirahat << " jam\n";
 
-    // Analisis aktivitas
     cout << "\n========== ANALISIS ==========\n";
 
     if (rataLangkah >= 7000) {
@@ -145,19 +139,14 @@ int main() {
         cout << "Tingkatkan waktu istirahat.\n";
     }
 
-    // Mencari olahraga terlama
     cout << "\n========== OLAHRAGA TERLAMA ==========\n";
 
     cariOlahragaTerlama(olahraga, hari);
-
-    // Fitur Grafik Langkah
 
     cout << "\n========== GRAFIK LANGKAH ==========\n";
 
     tampilGrafikLangkah(langkah, hari);
 
-    
-    // Mencari istirahat terlama
     cout << "\n========== ISTIRAHAT TERLAMA ==========\n";
 
     cariIstirahatTerlama(istirahat, hari);
