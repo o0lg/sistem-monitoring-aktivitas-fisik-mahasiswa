@@ -44,6 +44,25 @@ void cariOlahragaTerlama(int data[], string hari[]) {
          << tertinggi << " menit" << endl;
 }
 
+// Fungsi mencari istirahat terlama
+void cariIstirahatTerlama(float data[], string hari[]) {
+    float tertinggi = data[0];
+    int index = 0;
+
+    for (int i = 1; i < 7; i++) {
+        if (data[i] > tertinggi) {
+            tertinggi = data[i];
+            index = i;
+        }
+    }
+
+    cout << "\nHari dengan waktu istirahat paling lama: "
+         << hari[index] << endl;
+
+    cout << "Waktu istirahat: "
+         << tertinggi << " jam" << endl;
+}
+
 int main() {
     string hari[7] = {
         "Senin", "Selasa", "Rabu", "Kamis",
@@ -119,23 +138,10 @@ int main() {
 
     cariOlahragaTerlama(olahraga, hari);
 
+    // Mencari istirahat terlama
+    cout << "\n========== ISTIRAHAT TERLAMA ==========\n";
+
+    cariIstirahatTerlama(istirahat, hari);
+
     return 0;
-    void cariIstirahatTerlama(float data[], string hari[]) {
-    float tertinggi = data[0];
-    int index = 0;
-
-    for (int i = 1; i < 7; i++) {
-        if (data[i] > tertinggi) {
-            tertinggi = data[i];
-            index = i;
-        }
-    }
-
-    cout << "\nHari dengan waktu istirahat paling lama: "
-         << hari[index] << endl;
-
-    cout << "Waktu istirahat: "
-         << tertinggi << " jam" << endl;
-}
-    
 }
