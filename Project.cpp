@@ -120,4 +120,22 @@ int main() {
     cariOlahragaTerlama(olahraga, hari);
 
     return 0;
+    void cariIstirahatTerlama(float data[], string hari[]) {
+    float tertinggi = data[0];
+    int index = 0;
+
+    for (int i = 1; i < 7; i++) {
+        if (data[i] > tertinggi) {
+            tertinggi = data[i];
+            index = i;
+        }
+    }
+
+    cout << "\nHari dengan waktu istirahat paling lama: "
+         << hari[index] << endl;
+
+    cout << "Waktu istirahat: "
+         << tertinggi << " jam" << endl;
+}
+    
 }
