@@ -111,3 +111,12 @@ int main() {
 
 
 }
+int hitungTotalLangkah(int data[]) {
+    int total = 0;
+
+    for (int i = 0; i < 7; i++) {
+        total += data[i];
+    }
+
+    return total;
+}
