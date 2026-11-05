@@ -1,9 +1,9 @@
-
 #include <iostream>
 #include <iomanip>
 #include <string>
 using namespace std;
 
+// Fungsi menghitung rata-rata
 float hitungRataRata(int data[]) {
     int total = 0;
 
@@ -14,6 +14,7 @@ float hitungRataRata(int data[]) {
     return total / 7.0;
 }
 
+// Fungsi menghitung rata-rata istirahat
 float hitungRataRataIstirahat(float data[]) {
     float total = 0;
 
@@ -22,6 +23,25 @@ float hitungRataRataIstirahat(float data[]) {
     }
 
     return total / 7.0;
+}
+
+// Fungsi mencari olahraga terlama
+void cariOlahragaTerlama(int data[], string hari[]) {
+    int tertinggi = data[0];
+    int index = 0;
+
+    for (int i = 1; i < 7; i++) {
+        if (data[i] > tertinggi) {
+            tertinggi = data[i];
+            index = i;
+        }
+    }
+
+    cout << "\nHari dengan durasi olahraga paling lama: "
+         << hari[index] << endl;
+
+    cout << "Durasi olahraga: "
+         << tertinggi << " menit" << endl;
 }
 
 int main() {
@@ -36,6 +56,7 @@ int main() {
 
     cout << "SISTEM MONITORING AKTIVITAS FISIK MAHASISWA\n";
 
+    // Input data aktivitas
     for (int i = 0; i < 7; i++) {
         cout << "\nHari " << hari[i] << endl;
 
@@ -49,30 +70,30 @@ int main() {
         cin >> istirahat[i];
     }
 
+    // Rekap aktivitas tanpa tabel
     cout << "\n========== REKAP AKTIVITAS ==========\n";
 
-    cout << left << setw(12) << "Hari"
-         << setw(15) << "Langkah"
-         << setw(15) << "Olahraga"
-         << setw(15) << "Istirahat" << endl;
-
     for (int i = 0; i < 7; i++) {
-        cout << left << setw(12) << hari[i]
-             << setw(15) << langkah[i]
-             << setw(15) << olahraga[i]
-             << setw(15) << istirahat[i] << endl;
+        cout << "\nHari: " << hari[i] << endl;
+        cout << "Jumlah langkah: " << langkah[i] << endl;
+        cout << "Durasi olahraga: " << olahraga[i] << " menit" << endl;
+        cout << "Waktu istirahat: " << istirahat[i] << " jam" << endl;
     }
 
+    // Menghitung rata-rata
     float rataLangkah = hitungRataRata(langkah);
     float rataOlahraga = hitungRataRata(olahraga);
     float rataIstirahat = hitungRataRataIstirahat(istirahat);
 
     cout << fixed << setprecision(2);
 
-    cout << "\nRata-rata langkah: " << rataLangkah << endl;
+    cout << "\n========== RATA-RATA ==========\n";
+
+    cout << "Rata-rata langkah: " << rataLangkah << endl;
     cout << "Rata-rata olahraga: " << rataOlahraga << " menit\n";
     cout << "Rata-rata istirahat: " << rataIstirahat << " jam\n";
 
+    // Analisis aktivitas
     cout << "\n========== ANALISIS ==========\n";
 
     if (rataLangkah >= 7000) {
@@ -82,7 +103,7 @@ int main() {
     }
 
     if (rataOlahraga >= 30) {
-        cout << "durasi olahraga cukup baik.\n";
+        cout << "Durasi olahraga cukup baik.\n";
     } else {
         cout << "Tingkatkan durasi olahraga.\n";
     }
@@ -93,21 +114,10 @@ int main() {
         cout << "Tingkatkan waktu istirahat.\n";
     }
 
+    // Mencari olahraga terlama
+    cout << "\n========== OLAHRAGA TERLAMA ==========\n";
+
+    cariOlahragaTerlama(olahraga, hari);
+
     return 0;
 }
-void cariOlahragaTerlama(int data[], string hari[]) {
-    int tertinggi = data[0];
-    int index = 0;
-
-    for (int i = 1; i < 7; i++) {
-        if (data[i] > tertinggi) {
-            tertinggi = data[i];
-            index = i;
-        }
-    }
-
-    cout << "Hari dengan durasi olahraga paling lama: "
-         << hari[index] << endl;
-    cout << "Durasi olahraga: " << tertinggi << " menit" << endl;
-}
-cariOlahragaTerlama(olahraga, hari);
