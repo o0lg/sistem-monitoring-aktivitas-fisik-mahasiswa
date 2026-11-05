@@ -95,3 +95,19 @@ int main() {
 
     return 0;
 }
+void cariOlahragaTerlama(int data[], string hari[]) {
+    int tertinggi = data[0];
+    int index = 0;
+
+    for (int i = 1; i < 7; i++) {
+        if (data[i] > tertinggi) {
+            tertinggi = data[i];
+            index = i;
+        }
+    }
+
+    cout << "Hari dengan durasi olahraga paling lama: "
+         << hari[index] << endl;
+    cout << "Durasi olahraga: " << tertinggi << " menit" << endl;
+}
+cariOlahragaTerlama(olahraga, hari);
