@@ -63,6 +63,18 @@ void cariIstirahatTerlama(float data[], string hari[]) {
          << tertinggi << " jam" << endl;
 }
 
+//Fitur Grafik Batang Langkah
+void tampilGrafikLangkah(int data[], string hari[]) {
+    for (int i = 0; i < 7; i++) {
+        cout << left << setw(7) << hari[i] << "| ";
+        for (int j = 0; j < data[i] / 1000; j++) {
+            cout << "*";
+        }
+        cout << " " << data[1] << endl;
+    }
+    cout << "(1 bintang = 1000 langkah)\n";
+}
+
 int main() {
     string hari[7] = {
         "Senin", "Selasa", "Rabu", "Kamis",
@@ -138,6 +150,13 @@ int main() {
 
     cariOlahragaTerlama(olahraga, hari);
 
+    // Fitur Grafik Langkah
+
+    cout << "\n========== GRAFIK LANGKAH ==========\n";
+
+    tampilGrafikLangkah(langkah, hari);
+
+    
     // Mencari istirahat terlama
     cout << "\n========== ISTIRAHAT TERLAMA ==========\n";
 
