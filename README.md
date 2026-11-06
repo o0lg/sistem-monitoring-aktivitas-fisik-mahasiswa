@@ -53,7 +53,7 @@ Program mengolah data yang dimasukkan pengguna untuk menampilkan rekap aktivitas
 
 Berdasarkan pembagian fitur yang tercantum dalam dokumen kelompok:
 
-- **M Arfa Rabbani Algusma** — Pencatatan jumlah langkah kaki dan durasi olahraga selama tujuh hari, rekap aktivitas, perhitungan rata-rata aktivitas fisik, serta analisis berdasarkan target.
+- **M Arfa Rabbani Algusma** — Membuat fungsi untuk menghitung rata-rata jumlah langkah kaki selama satu minggu (tujuh hari).
 - **M Iqbal Al-Ghoni** — Fitur pencatatan konsumsi air minum harian dan perhitungan rata-rata konsumsi air dalam satuan liter.
 - **M Andra Aditia** — Grafik jumlah langkah harian menggunakan karakter bintang, dengan satu bintang mewakili 1.000 langkah.
 - **Tsuraya Farras** — Fitur pencarian hari dengan waktu istirahat paling lama selama tujuh hari.
