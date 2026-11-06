@@ -13,7 +13,7 @@ float hitungRataRata(int data[]) {
     return total / 7.0;
 }
 
-float hitungRataRataIstirahat(float data[]) {
+float hitungRataRataProtein(float data[]) {
     float total = 0;
 
     for (int i = 0; i < 7; i++) {
@@ -21,56 +21,6 @@ float hitungRataRataIstirahat(float data[]) {
     }
 
     return total / 7.0;
-}
-
-void cariOlahragaTerlama(int data[], string hari[]) {
-    int tertinggi = data[0];
-    int index = 0;
-
-    for (int i = 1; i < 7; i++) {
-        if (data[i] > tertinggi) {
-            tertinggi = data[i];
-            index = i;
-        }
-    }
-
-    cout << "\nHari dengan durasi olahraga paling lama: "
-         << hari[index] << endl;
-
-    cout << "Durasi olahraga: "
-         << tertinggi << " menit" << endl;
-}
-
-void cariIstirahatTerlama(float data[], string hari[]) {
-    float tertinggi = data[0];
-    int index = 0;
-
-    for (int i = 1; i < 7; i++) {
-        if (data[i] > tertinggi) {
-            tertinggi = data[i];
-            index = i;
-        }
-    }
-
-    cout << "\nHari dengan waktu istirahat paling lama: "
-         << hari[index] << endl;
-
-    cout << "Waktu istirahat: "
-         << tertinggi << " jam" << endl;
-}
-
-void tampilGrafikLangkah(int data[], string hari[]) {
-    for (int i = 0; i < 7; i++) {
-        cout << left << setw(7) << hari[i] << "| ";
-
-        for (int j = 0; j < data[i] / 1000; j++) {
-            cout << "*";
-        }
-
-        cout << " " << data[i] << endl;
-    }
-
-    cout << "(1 bintang = 1000 langkah)\n";
 }
 
 int main() {
@@ -81,8 +31,7 @@ int main() {
 
     int langkah[7];
     int olahraga[7];
-    float istirahat[7];
-    float airMinum[7];
+    float protein[7];
 
     cout << "SISTEM MONITORING AKTIVITAS FISIK MAHASISWA\n";
 
@@ -95,36 +44,33 @@ int main() {
         cout << "Durasi olahraga (menit): ";
         cin >> olahraga[i];
 
-        cout << "Waktu istirahat (jam): ";
-        cin >> istirahat[i];
-
-        cout << "Konsumsi air minum (liter): ";
-        cin >> airMinum[i];
+        cout << "Konsumsi protein (gram): ";
+        cin >> protein[i];
     }
 
     cout << "\n========== REKAP AKTIVITAS ==========\n";
 
+    cout << left << setw(12) << "Hari"
+         << setw(15) << "Langkah"
+         << setw(15) << "Olahraga"
+         << setw(15) << "Protein (g)" << endl;
+
     for (int i = 0; i < 7; i++) {
-        cout << "\nHari: " << hari[i] << endl;
-        cout << "Jumlah langkah: " << langkah[i] << endl;
-        cout << "Durasi olahraga: " << olahraga[i] << " menit" << endl;
-        cout << "Waktu istirahat: " << istirahat[i] << " jam" << endl;
-        cout << "Konsumsi air minum: " << airMinum[i] << " liter" << endl;
+        cout << left << setw(12) << hari[i]
+             << setw(15) << langkah[i]
+             << setw(15) << olahraga[i]
+             << setw(15) << protein[i] << endl;
     }
 
     float rataLangkah = hitungRataRata(langkah);
     float rataOlahraga = hitungRataRata(olahraga);
-    float rataIstirahat = hitungRataRataIstirahat(istirahat);
-    float rataAirMinum = hitungRataRataIstirahat(airMinum);
+    float rataProtein = hitungRataRataProtein(protein);
 
     cout << fixed << setprecision(2);
 
-    cout << "\n========== RATA-RATA ==========\n";
-
-    cout << "Rata-rata langkah: " << rataLangkah << endl;
+    cout << "\nRata-rata langkah: " << rataLangkah << endl;
     cout << "Rata-rata olahraga: " << rataOlahraga << " menit\n";
-    cout << "Rata-rata istirahat: " << rataIstirahat << " jam\n";
-    cout << "Rata-rata air minum: " << rataAirMinum << " liter\n";
+    cout << "Rata-rata konsumsi protein: " << rataProtein << " gram\n";
 
     cout << "\n========== ANALISIS ==========\n";
 
@@ -140,29 +86,11 @@ int main() {
         cout << "Tingkatkan durasi olahraga.\n";
     }
 
-    if (rataIstirahat >= 7) {
-        cout << "Waktu istirahat cukup baik.\n";
+    if (rataProtein >= 50.0) {
+        cout << "Konsumsi protein harian cukup baik.\n";
     } else {
-        cout << "Tingkatkan waktu istirahat.\n";
+        cout << "Tingkatkan konsumsi protein harian.\n";
     }
-
-    if (rataAirMinum >= 2.0) {
-        cout << "Konsumsi air minum cukup baik.\n";
-    } else {
-        cout << "Tingkatkan konsumsi air minum.\n";
-    }
-
-    cout << "\n========== OLAHRAGA TERLAMA ==========\n";
-
-    cariOlahragaTerlama(olahraga, hari);
-
-    cout << "\n========== GRAFIK LANGKAH ==========\n";
-
-    tampilGrafikLangkah(langkah, hari);
-
-    cout << "\n========== ISTIRAHAT TERLAMA ==========\n";
-
-    cariIstirahatTerlama(istirahat, hari);
 
     return 0;
 }
