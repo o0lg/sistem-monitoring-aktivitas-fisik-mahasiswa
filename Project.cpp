@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -24,8 +23,8 @@ float hitungRataRataProtein(float data[]) {
     return total / 7.0;
 }
 
-void cariLangkahTerbanyak(int data[], string hari[]) {
-    int tertinggi = data[0];
+void cariWaktuMakanTerlama(float data[], string hari[]) {
+    float tertinggi = data[0];
     int index = 0;
 
     for (int i = 1; i < 7; i++) {
@@ -35,11 +34,11 @@ void cariLangkahTerbanyak(int data[], string hari[]) {
         }
     }
 
-    cout << "\nHari dengan jumlah langkah kaki terbanyak: "
+    cout << "\nHari dengan waktu makan paling lama: "
          << hari[index] << endl;
 
-    cout << "Jumlah langkah kaki: "
-         << tertinggi << " langkah" << endl;
+    cout << "Waktu makan: "
+         << tertinggi << " jam" << endl;
 }
 
 int main() {
@@ -117,9 +116,9 @@ int main() {
         cout << "Tingkatkan konsumsi protein harian.\n";
     }
 
-    cout << "\n========== LANGKAH KAKI TERBANYAK ==========\n";
+    cout << "\n========== WAKTU MAKAN TERLAMA ==========\n";
 
-    cariLangkahTerbanyak(langkah, hari);
+    cariWaktuMakanTerlama(waktuMakan, hari);
 
     return 0;
 }
