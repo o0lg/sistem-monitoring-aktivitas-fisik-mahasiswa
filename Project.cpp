@@ -82,6 +82,7 @@ int main() {
     int langkah[7];
     int olahraga[7];
     float istirahat[7];
+    float airMinum[7];
 
     cout << "SISTEM MONITORING AKTIVITAS FISIK MAHASISWA\n";
 
@@ -96,6 +97,9 @@ int main() {
 
         cout << "Waktu istirahat (jam): ";
         cin >> istirahat[i];
+
+        cout << "Konsumsi air minum (liter): ";
+        cin >> airMinum[i];
     }
 
     cout << "\n========== REKAP AKTIVITAS ==========\n";
@@ -105,11 +109,13 @@ int main() {
         cout << "Jumlah langkah: " << langkah[i] << endl;
         cout << "Durasi olahraga: " << olahraga[i] << " menit" << endl;
         cout << "Waktu istirahat: " << istirahat[i] << " jam" << endl;
+        cout << "Konsumsi air minum: " << airMinum[i] << " liter" << endl;
     }
 
     float rataLangkah = hitungRataRata(langkah);
     float rataOlahraga = hitungRataRata(olahraga);
     float rataIstirahat = hitungRataRataIstirahat(istirahat);
+    float rataAirMinum = hitungRataRataIstirahat(airMinum);
 
     cout << fixed << setprecision(2);
 
@@ -118,6 +124,7 @@ int main() {
     cout << "Rata-rata langkah: " << rataLangkah << endl;
     cout << "Rata-rata olahraga: " << rataOlahraga << " menit\n";
     cout << "Rata-rata istirahat: " << rataIstirahat << " jam\n";
+    cout << "Rata-rata air minum: " << rataAirMinum << " liter\n";
 
     cout << "\n========== ANALISIS ==========\n";
 
@@ -137,6 +144,12 @@ int main() {
         cout << "Waktu istirahat cukup baik.\n";
     } else {
         cout << "Tingkatkan waktu istirahat.\n";
+    }
+
+    if (rataAirMinum >= 2.0) {
+        cout << "Konsumsi air minum cukup baik.\n";
+    } else {
+        cout << "Tingkatkan konsumsi air minum.\n";
     }
 
     cout << "\n========== OLAHRAGA TERLAMA ==========\n";
